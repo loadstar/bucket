@@ -15,7 +15,7 @@ public class BucketUtils {
      *
      * @param id: 123456abc123456
      * @param salt : [B@270421f5
-     * @param c_group_size: 0.6
+     * @param c_group_size: 0.6 控制组阈值
      * @return
      */
     public static boolean ab_split(String id, String salt, float c_group_size){
@@ -25,9 +25,9 @@ public class BucketUtils {
         float ab = (float) HexToInt(sha.substring(0,6))/0xFFFFFF;
 
         if (ab > c_group_size){
-            return true;
+            return true; // 实验组
         }else{
-            return false;
+            return false; // 控制组
         }
     }
 
